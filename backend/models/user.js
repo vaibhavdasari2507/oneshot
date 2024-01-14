@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-
+const bcrypt = require("bcryptjs");
 const userSchema = new mongoose.Schema({
     username: {
         type: String,
@@ -40,6 +40,18 @@ const userSchema = new mongoose.Schema({
         unique: true,
         trim: true,
     },
+    age:{
+        type: Number,
+        required: true,
+        trim: true,
+    },
+    blogs:[
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Blog'
+        }
+    ],
+
 });
 
 userSchema.pre('save', async function (next) {
