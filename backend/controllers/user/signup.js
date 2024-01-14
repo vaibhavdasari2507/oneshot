@@ -1,6 +1,8 @@
 const User  = require('../../models/user');
 const {validationResult} = require('express-validator');
 const {generate_jwt} = require('../../utils/generate_jwt');
+
+
 exports.signup = async (req,res)=>{
 
     const errors = validationResult(req);
@@ -33,13 +35,7 @@ exports.signup = async (req,res)=>{
         const user = await User.create({username,password,email,name,age});
         await user.save();
 
-        await generate_jwt(username,password,res);
-        // res.status(201).json({
-        //     success: true,
-        //     message: "User created successfully",
-        //     data: user,
-        // })
-
+        await generate_jwt(user,res);
     }
 
     catch(err){
