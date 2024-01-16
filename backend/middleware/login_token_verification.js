@@ -5,7 +5,7 @@ exports.login_token_verification = (req, res, next) => {
     const token = authHeader && authHeader.split(" ")[1];
     if(token){
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        req.user = decoded;
+        req.user = decoded.user;
     }
     // console.log(req.user);
     next();

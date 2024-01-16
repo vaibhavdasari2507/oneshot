@@ -24,7 +24,8 @@ const storage = getStorage();
 
 exports.add_blog = async (req, res) => {
   try {
-
+    let attach_url;
+    console.log(req);
     const file = req.file;
     try {
       const storageRef = ref(storage, file.originalname);
