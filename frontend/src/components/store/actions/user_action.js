@@ -5,13 +5,16 @@ export const signup = (user_data) => async (dispatch) => {
     try {
         dispatch(user_actions.registerUserreq());
         const res = await axios.post('http://localhost:8000/user/signup', user_data)
-        const token = await res.token;
-        const success = await res.success;
-
+        console.log(res);
+        const token = await res.data.token;
+        const success = await res.data.success;
+        // console.log(res.data.success);
         if (success) {
+            // console.log('i success');
             dispatch(user_actions.registerUsersuccess(token));
         }
         else {
+            // console.log('i fail');
             dispatch(user_actions.registerUserfail(res.message));
         }
 

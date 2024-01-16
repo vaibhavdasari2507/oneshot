@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { signup } from '../store/actions/user_action';
 import {useDispatch} from 'react-redux';
+import { useNavigate  } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const RegistrationForm = () => {
     const dispatch = useDispatch();
-
+    const navigate = useNavigate ();
+    const user_state = useSelector(state => state.user);
+    const { loading, isAuth, user, error } = user_state;
     const [formData, setFormData] = useState({
         username: '',
         password: '',
@@ -58,6 +62,8 @@ const RegistrationForm = () => {
         // Perform registration logic here using formData
         console.log('Registration data:', formData);
         dispatch(signup(formData));
+        console.log(isAuth);
+        if(isAuth) navigate('/blogpage')
     };
 
     return (
