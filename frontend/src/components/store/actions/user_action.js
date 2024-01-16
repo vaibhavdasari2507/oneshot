@@ -2,7 +2,7 @@ import { user_actions } from "../slices/user_slice";
 import axios from "axios";
 
 const setToken = (token) => {
-    localStorage.setItem("userToken",JSON.stringify(token))
+    localStorage.setItem("userToken", JSON.stringify(token))
 }
 
 const getToken = () => {
@@ -12,9 +12,9 @@ const getToken = () => {
 const getConfig = () => {
     let token = getToken()
     return {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
+        headers: {
+            Authorization: `Bearer ${token}`
+        }
     };
 }
 
@@ -43,16 +43,16 @@ export const signup = (user_data) => async (dispatch) => {
 }
 
 export const login = (user_data) => async (dispatch) => {
-    try{
+    try {
         dispatch(user_actions.loginRequest());
         const res = await axios.post('http://localhost:8000/user/login', user_data);
         const token = await res.data.token;
         const success = await res.data.success;
         setToken(token)
-        if(success){
+        if (success) {
             dispatch(user_actions.loginRequestSuccess(token));
         }
-        else{
+        else {
             dispatch(user_actions.loginRequestFail(res.message));
         }
     }
@@ -62,15 +62,15 @@ export const login = (user_data) => async (dispatch) => {
 }
 
 export const load_user = () => async (dispatch) => {
-    try{
+    try {
         dispatch(user_actions.loadUserRequest());
-        const res = await axios.get('http://localhost:8000/user/profile',getConfig());
+        const res = await axios.get('http://localhost:8000/user/myprofile', getConfig());
         const success = await res.success;
         const user = await res.data;
-        if(success){
+        if (success) {
             dispatch(user_actions.loadUserRequestSuccess(user));
         }
-        else{
+        else {
             dispatch(user_actions.loadUserRequestFail(res.message));
         }
     }
