@@ -18,6 +18,10 @@ const blogSchema = new mongoose.Schema({
     type: Number,
     default: 0,
   },
+  attach_url:{
+    type: String,
+    required: true,
+  },
   comments: [
     {
       type: mongoose.Schema.Types.ObjectId,
