@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { login } from '../store/actions/user_action';
 import {useDispatch,useSelector} from 'react-redux';
 import { useNavigate  } from 'react-router-dom';
+import Navbar from './header/navbar';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -54,23 +55,56 @@ const LoginForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username:
-                <input type="text" name="username" value={formData.username} onChange={handleChange} />
-                <span className="error">{errors.username}</span>
-            </label>
-            <br />
+      <>
+        <Navbar/>
+        <div
+          className="container-fluid"
+          style={{
+            minWidth: "400px",
+            width: "50%",
+            border: "2px solid black",
+            borderRadius: "10px",
+            padding: "20px",
+            marginTop: "10%",
+          }}
+        >
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label for="exampleInputusername" className="form-label">
+                Username
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleInputusername"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              />
+              <span classNameName="error">{errors.username}</span>
+            </div>
 
-            <label>
-                Password:
-                <input type="password" name="password" value={formData.password} onChange={handleChange} />
-                <span className="error">{errors.password}</span>
-            </label>
-            <br />
+            <div className="mb-3">
+              <label for="exampleInputPassword1" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <span classNameName="error">{errors.password}</span>
+            </div>
 
-            <button type="submit">Login</button>
-        </form>
+            <button type="submit" className="btn btn-primary">
+              Login
+            </button>
+          </form>
+        </div>
+      </>
     );
 };
 

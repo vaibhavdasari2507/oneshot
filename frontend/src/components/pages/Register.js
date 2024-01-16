@@ -3,6 +3,7 @@ import { signup } from '../store/actions/user_action';
 import {useDispatch} from 'react-redux';
 import { useNavigate  } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import Navbar from './header/navbar';
 
 const RegistrationForm = () => {
     const dispatch = useDispatch();
@@ -67,44 +68,101 @@ const RegistrationForm = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username:
-                <input type="text" name="username" value={formData.username} onChange={handleChange} />
-                <span className="error">{errors.username}</span>
-            </label>
-            <br />
+      <>
+        <Navbar />
+        <div
+          className="container-fluid"
+          style={{
+            minWidth: "400px",
+            width: "50%",
+            border: "2px solid black",
+            borderRadius: "10px",
+            padding: "20px",
+            marginTop: "10%",
+          }}
+        >
+          <form onSubmit={handleSubmit}>
+            <div className="mb-3">
+              <label for="exampleInputusername" className="form-label">
+                Username
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleInputusername"
+                name="username"
+                value={formData.username}
+                onChange={handleChange}
+              />
+              <span classNameName="error">{errors.username}</span>
+            </div>
 
-            <label>
-                Password:
-                <input type="password" name="password" value={formData.password} onChange={handleChange} />
-                <span className="error">{errors.password}</span>
-            </label>
-            <br />
+            <div className="mb-3">
+              <label for="exampleInputPassword1" className="form-label">
+                Password
+              </label>
+              <input
+                type="password"
+                className="form-control"
+                id="exampleInputPassword1"
+                name="password"
+                value={formData.password}
+                onChange={handleChange}
+              />
+              <span classNameName="error">{errors.password}</span>
+            </div>
 
-            <label>
-                Name:
-                <input type="text" name="name" value={formData.name} onChange={handleChange} />
-                <span className="error">{errors.name}</span>
-            </label>
-            <br />
+            <div className="mb-3">
+              <label for="exampleInputPassword2" className="form-label">
+                Email
+              </label>
+              <input
+                type="email"
+                className="form-control"
+                id="exampleInputPassword2"
+                name="email"
+                value={formData.email}
+                onChange={handleChange}
+              />
+              <span classNameName="error">{errors.password}</span>
+            </div>
 
-            <label>
-                Email:
-                <input type="email" name="email" value={formData.email} onChange={handleChange} />
-                <span className="error">{errors.email}</span>
-            </label>
-            <br />
+            <div className="mb-3">
+              <label for="exampleInputPassword3" className="form-label">
+                Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="exampleInputPassword3"
+                name="name"
+                value={formData.name}
+                onChange={handleChange}
+              />
+              <span classNameName="error">{errors.password}</span>
+            </div>
 
-            <label>
-                Age:
-                <input type="number" name="age" value={formData.age} onChange={handleChange} />
-                <span className="error">{errors.age}</span>
-            </label>
-            <br />
+            <div className="mb-3">
+              <label for="exampleInputPassword4" className="form-label">
+                Age
+              </label>
+              <input
+                type="number"
+                className="form-control"
+                id="exampleInputPassword4"
+                name="age"
+                value={formData.age}
+                onChange={handleChange}
+              />
+              <span classNameName="error">{errors.password}</span>
+            </div>
 
-            <button type="submit">Register</button>
-        </form>
+            <button type="submit" className="btn btn-primary">
+              Register
+            </button>
+          </form>
+        </div>
+      </>
     );
 };
 

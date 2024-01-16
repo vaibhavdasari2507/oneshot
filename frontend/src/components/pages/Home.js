@@ -1,17 +1,13 @@
 // Home.js
 import React from 'react';
+import Header from "../pages/header/header"
+import Navbar from "../pages/header/navbar"
 const Home = () => {
     return (
-        <div>
-            <h1>Welcome to the Home Page</h1>
-            <a href='/login'>
-                Login
-            </a>
-            <br></br>
-            <a href='/signup'>
-                Signup
-            </a>
-        </div>
+      <>
+        <Navbar/>
+        <Header />
+      </>
     );
 };
 
