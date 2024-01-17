@@ -24,7 +24,7 @@ const Blogpage = () => {
 
     const handleLike = async (blogid) => {
         try {
-            const res = await axios.put(`http://localhost:8000/like/${blogid}`);
+            const res = await axios.put(`https://oneshot-backend-gvok.onrender.com/like/${blogid}`);
             console.log(res);
             alert("liked")
         }
@@ -38,7 +38,7 @@ const Blogpage = () => {
 
         try {
             console.log(blogid);
-            const res = await axios.post(`http://localhost:8000/comment/${blogid}`,{
+            const res = await axios.post(`https://oneshot-backend-gvok.onrender.com/comment/${blogid}`,{
                 content
             },getConfig()); 
             alert("commented")

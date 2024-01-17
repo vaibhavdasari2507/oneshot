@@ -22,7 +22,7 @@ const getConfig = () => {
 export const signup = (user_data) => async (dispatch) => {
     try {
         dispatch(user_actions.registerUserreq());
-        const res = await axios.post('http://localhost:8000/user/signup', user_data)
+        const res = await axios.post('https://oneshot-backend-gvok.onrender.com/user/signup', user_data)
         console.log(res);
         const token = res.data.token;
         const success = res.data.success;
@@ -46,7 +46,7 @@ export const signup = (user_data) => async (dispatch) => {
 export const login = (user_data) => async (dispatch) => {
     try {
         dispatch(user_actions.loginRequest());
-        const res = await axios.post('http://localhost:8000/user/login', user_data);
+        const res = await axios.post('https://oneshot-backend-gvok.onrender.com/user/login', user_data);
         const token = await res.data.token;
         const success = await res.data.success;
         setToken(token)
@@ -65,7 +65,7 @@ export const login = (user_data) => async (dispatch) => {
 export const load_user = () => async (dispatch) => {
     try {
         dispatch(user_actions.loadUserRequest());
-        const res = await axios.get('http://localhost:8000/user/myprofile', getConfig());
+        const res = await axios.get('https://oneshot-backend-gvok.onrender.com/user/myprofile', getConfig());
         // console.log("i am res ");
         // console.log(res.data.data);
         const success = await res.data.success;
@@ -85,7 +85,7 @@ export const load_user = () => async (dispatch) => {
 export const load_author = (author_id) => async (dispatch) => {
     try {
         dispatch(user_actions.loadAuthorRequest());
-        const res = await axios.get(`http://localhost:8000/user/authorprofile/${author_id}`);
+        const res = await axios.get(`https://oneshot-backend-gvok.onrender.com/user/authorprofile/${author_id}`);
         const success = await res.data.success;
         const author = await res.data.data;
         if (success) {

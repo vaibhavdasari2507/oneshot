@@ -23,7 +23,7 @@ export const get_comments = (blogid) => async (dispatch) => {
         console.log("i am in get comments id");
         console.log(blogid);
         dispatch(comment_actions.loadCommentRequest());
-        const res = await axios.get(`http://localhost:8000/comment/${blogid}`, getConfig());
+        const res = await axios.get(`https://oneshot-backend-gvok.onrender.com/comment/${blogid}`, getConfig());
         const success = await res.data.success;
         if (success) {
             dispatch(comment_actions.loadCommentRequestSuccess(res.data.data));

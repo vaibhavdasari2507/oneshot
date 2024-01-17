@@ -19,7 +19,7 @@ export const getConfig = () => {
 export const add_blog = (blog_data) => async (dispatch) => {
     try {
         dispatch(blog_actions.addBlogRequest());
-        const res = await axios.post('http://localhost:8000/blog/add', blog_data);
+        const res = await axios.post('https://oneshot-backend-gvok.onrender.com/blog/add', blog_data);
         const success = await res.data.success;
         if (success) {
             dispatch(blog_actions.addBlogSuccess(res.data.data));
@@ -36,7 +36,7 @@ export const add_blog = (blog_data) => async (dispatch) => {
 export const get_all_blogs = () => async (dispatch) => {
     try {
         dispatch(blog_actions.getAllBlogsRequest());
-        const res = await axios.get('http://localhost:8000/feed');
+        const res = await axios.get('https://oneshot-backend-gvok.onrender.com/feed');
         const success = await res.data.success;
         if (success) {
             // console.log(res.data.data);
@@ -54,7 +54,7 @@ export const get_all_blogs = () => async (dispatch) => {
 export const get_my_blogs = () => async (dispatch) => {
     try {
         dispatch(blog_actions.getMyBlogsRequest());
-        const res = await axios.get('http://localhost:8000/blog/myblogs', getConfig());
+        const res = await axios.get('https://oneshot-backend-gvok.onrender.com/blog/myblogs', getConfig());
         const success = await res.data.success;
         // console.log("i am in get my blogs");
         // console.log(res.data.data);
@@ -75,7 +75,7 @@ export const get_author_blogs = (id) => async (dispatch) => {
         console.log("i am in get author blogs");
         console.log(id);
         dispatch(blog_actions.getAuthorBlogsRequest());
-        const res = await axios.get(`http://localhost:8000/author/${id}`,getConfig());
+        const res = await axios.get(`https://oneshot-backend-gvok.onrender.com/author/${id}`,getConfig());
         const success = await res.data.success;
         console.log(success);
         if (success) {
@@ -94,7 +94,7 @@ export const get_author_blogs = (id) => async (dispatch) => {
 export const delete_blog = (id) => async (dispatch) => {
     try {
         dispatch(blog_actions.deleteBlogRequest());
-        const res = await axios.delete(`http://localhost:8000/blog/${id}`, getConfig());
+        const res = await axios.delete(`https://oneshot-backend-gvok.onrender.com/blog/${id}`, getConfig());
         const success = await res.data.success;
         if (success) {
             dispatch(blog_actions.deleteBlogSuccess(id));
@@ -111,7 +111,7 @@ export const delete_blog = (id) => async (dispatch) => {
 export const update_blog = (id, blog_data) => async (dispatch) => {
     try {
         dispatch(blog_actions.updateBlogRequest());
-        const res = await axios.patch(`http://localhost:8000/blog/${id}`, blog_data, getConfig());
+        const res = await axios.patch(`https://oneshot-backend-gvok.onrender.com/blog/${id}`, blog_data, getConfig());
         const success = await res.data.success;
         if (success) {
             dispatch(blog_actions.updateBlogSuccess(res.data.data));
