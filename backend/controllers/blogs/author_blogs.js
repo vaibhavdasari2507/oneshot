@@ -1,15 +1,17 @@
 const Blog = require("../../models/blog");
 const User  = require('../../models/user');
 
-exports.get_my_blogs = async (req,res)=>{
+exports.get_author_blogs = async (req,res)=>{
     try{
         const user = req.user;
-        // console.log("i am in blog controller");
-        // console.log(user);
+        const id = req.params.id;
+        console.log("i am in blog controller");
+        console.log(user);
         if(user){
             // const blogs = await User.findById(user._id).populate("blogs");
-            const blogs = await Blog.find({author: user._id})
-            // console.log(blogs);
+            const blogs = await Blog.find({author: id})
+            console.log("i am in author blogs controller");
+            console.log(blogs);
             res.status(200).json({
                 success: true,
                 message: "All user blogs fetched successfully",

@@ -1,4 +1,6 @@
 export default function Navbar() {
+  const token = localStorage.getItem("userToken");
+  console.log(token);
   return (
     <nav className="navbar bg-dark bg-dark navbar-expand-lg">
       <div className="container-fluid">
@@ -16,7 +18,27 @@ export default function Navbar() {
         >
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className="collapse navbar-collapse" id="navbarNav">
+        {token ? (<div className="collapse navbar-collapse" id="navbarNav">
+          <ul className="navbar-nav ms-auto">
+            <li className="btn btn-info" style={{ marginRight: "20px" }}>
+              <a className="nav-link active" aria-current="page" href="/myprofile">
+                My Profile
+              </a>
+            </li>
+            <li className="btn btn-warning">
+              <a className="nav-link active"  onClick={
+                (e)=>{
+                  e.preventDefault();
+                  localStorage.removeItem("userToken");
+                  window.location.href = "/";
+                }
+              }>
+                Logout
+              </a>
+            </li>
+          </ul>
+          </div>)
+        : (<div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav ms-auto">
             <li className="btn btn-info" style={{ marginRight: "20px" }}>
               <a className="nav-link active" aria-current="page" href="/login">
@@ -29,7 +51,7 @@ export default function Navbar() {
               </a>
             </li>
           </ul>
-        </div>
+        </div>)}
       </div>
     </nav>
   );

@@ -55,6 +55,22 @@ const user_slice = createSlice({
             state.user = null;
             state.error = action.payload;
         },
+        loadAuthorRequest(state, action) {
+            state.loading = true;
+            state.isAuth = false;
+        },
+        loadAuthorRequestSuccess(state, action) {
+            state.loading = false;
+            state.isAuth = true;
+            state.user = action.payload;
+
+        },
+        loadAuthorRequestFail(state, action) {
+            state.loading = false;
+            state.isAuth = false;
+            state.user = null;
+            state.error = action.payload;
+        },
         clearErrors(state) {
             state.loading = true;
             state.error = null;

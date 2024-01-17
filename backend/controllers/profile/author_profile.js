@@ -3,6 +3,8 @@ const User  = require('../../models/user');
 exports.get_author_profile = async (req,res)=>{
     try{
         const id = req.params.id;
+        // console.log("i am in author profile controller");
+        // console.log(id);
         const profile = await User.findOne({_id: id});
         if(profile){
             res.status(200).json({

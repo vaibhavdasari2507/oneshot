@@ -5,7 +5,6 @@ import Navbar from "../pages/header/navbar"
 const Home = () => {
     return (
       <>
-        <Navbar/>
         <Header />
       </>
     );

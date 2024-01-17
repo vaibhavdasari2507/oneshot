@@ -10,7 +10,7 @@ const blog_slice = createSlice({
         get_success: false,
         get_my_success: false,
         blogdata: [],
-        myblogdata: null,
+        myblogdata: [],
         error: null
     },
     reducers: {
@@ -53,6 +53,20 @@ const blog_slice = createSlice({
             state.myblogdata = action.payload;
         },
         getMyBlogsFail(state,action){
+            state.loading = false;
+            state.get_my_success = false;
+            state.error = action.payload;
+        },
+        getAuthorBlogsRequest(state,action){
+            state.loading = true;
+            state.get_my_success = false;
+        },
+        getAuthorBlogsSuccess(state,action){
+            state.loading = false;
+            state.get_my_success = true;
+            state.myblogdata = action.payload;
+        },
+        getAuthorBlogsFail(state,action){
             state.loading = false;
             state.get_my_success = false;
             state.error = action.payload;

@@ -11,6 +11,7 @@ const getToken = () => {
 
 const getConfig = () => {
     let token = getToken()
+    // console.log("i am token "+token);
     return {
         headers: {
             Authorization: `Bearer ${token}`
@@ -65,8 +66,10 @@ export const load_user = () => async (dispatch) => {
     try {
         dispatch(user_actions.loadUserRequest());
         const res = await axios.get('http://localhost:8000/user/myprofile', getConfig());
-        const success = await res.success;
-        const user = await res.data;
+        // console.log("i am res ");
+        // console.log(res.data.data);
+        const success = await res.data.success;
+        const user = await res.data.data;
         if (success) {
             dispatch(user_actions.loadUserRequestSuccess(user));
         }
@@ -76,5 +79,23 @@ export const load_user = () => async (dispatch) => {
     }
     catch (err) {
         dispatch(user_actions.loadUserRequestFail(err.message));
+    }
+}
+
+export const load_author = (author_id) => async (dispatch) => {
+    try {
+        dispatch(user_actions.loadAuthorRequest());
+        const res = await axios.get(`http://localhost:8000/user/authorprofile/${author_id}`);
+        const success = await res.data.success;
+        const author = await res.data.data;
+        if (success) {
+            dispatch(user_actions.loadAuthorRequestSuccess(author));
+        }
+        else {
+            dispatch(user_actions.loadAuthorRequestFail(res.message));
+        }
+    }
+    catch (err) {
+        dispatch(user_actions.loadAuthorRequestFail(err.message));
     }
 }

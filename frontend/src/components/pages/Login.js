@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import { login } from '../store/actions/user_action';
 import {useDispatch,useSelector} from 'react-redux';
 import { useNavigate  } from 'react-router-dom';
-import Navbar from './header/navbar';
 
 const LoginForm = () => {
     const dispatch = useDispatch();
@@ -56,7 +55,6 @@ const LoginForm = () => {
 
     return (
       <>
-        <Navbar/>
         <div
           className="container-fluid"
           style={{

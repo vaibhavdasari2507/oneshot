@@ -8,6 +8,7 @@ exports.add_comment = async (req, res) => {
     const { blogid } = req.params;
     const { _id } = req.user;
     const { content } = req.body;
+    console.log(blogid, _id, content);
     if (!_id && !blogid) {
       return res.status(400).json({
         status: false,
