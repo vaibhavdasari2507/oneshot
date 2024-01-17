@@ -5,7 +5,7 @@ import { load_user } from '../store/actions/user_action';
 
 const Profile = () => {
     const dispatch = useDispatch();
-    // dispatch(load_user()); 
+    dispatch(load_user()); 
     // const { userId } = useParams(); // Assuming you have a userId parameter
     // const [userProfile, setUserProfile] = useState(null);
 
