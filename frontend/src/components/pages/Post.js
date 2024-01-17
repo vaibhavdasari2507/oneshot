@@ -1,15 +1,17 @@
 // Post.js
 import React from 'react';
 
-const Post = ({ author, content, onLike, onComment }) => {
+const Post = ({ title,author, content, attach_url,onLike, onComment }) => {
     return (
         <div>
             <div>
-                <a href={`/profile/${author.id}`}>
+                <h3>{title}</h3>
+                <a href={`/profile/${author._id}`}>
                     {/* Replace 'profile' with the actual route for the user profile */}
                     {author.name}'s Profile
                 </a>
             </div>
+            <img src={attach_url} alt="Post" style={{ width: '100px', height: '100px' }} />
             <div>
                 <p>{content}</p>
             </div>

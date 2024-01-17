@@ -5,7 +5,7 @@ import { load_user } from '../store/actions/user_action';
 
 const Profile = () => {
     const dispatch = useDispatch();
-    dispatch(load_user()); 
+    // dispatch(load_user()); 
     // const { userId } = useParams(); // Assuming you have a userId parameter
     // const [userProfile, setUserProfile] = useState(null);
 
@@ -30,27 +30,7 @@ const Profile = () => {
 
     return (
         <div>
-            {userProfile ? (
-                <div>
-                    <h2>{userProfile.username}'s Profile</h2>
-                    <img src={userProfile.profilePic} alt="Profile" style={{ width: '100px', height: '100px' }} />
-                    <p>Number of Posts: {userProfile.numberOfPosts}</p>
 
-                    {/* Example: Display user's posts */}
-                    <div>
-                        <h3>My Posts</h3>
-                        <ul>
-                            {/* Replace this with your actual list of posts */}
-                            <li>Post 1</li>
-                            <li>Post 2</li>
-                            <li>Post 3</li>
-                            {/* ... */}
-                        </ul>
-                    </div>
-                </div>
-            ) : (
-                <p>Loading...</p>
-            )}
         </div>
     );
 };
